@@ -1,10 +1,19 @@
 # Recipe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
+Recipe is an Single Page Application (SPA) to that let users add, delete, update and create new recipe and recipe items for the shopping list. This is a mvp version created within a very short time and still under development.
+
+See the app live here: https://recipe-angular-rukon.netlify.app
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Angular 2+
+2. JavaScript
+3. TypeScript
+4. BootStrap
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `https://recipe-angular-rukon.netlify.app/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
