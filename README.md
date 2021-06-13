@@ -13,7 +13,7 @@ See the app live here: https://recipe-angular-rukon.netlify.app
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `https://recipe-angular-rukon.netlify.app/`. The app will automatically deploy if you change any of the source files committed to the github.
+Run `ng serve` for a dev server. Navigate to [https://recipe-angular-rukon.netlify.app/](https://recipe-angular-rukon.netlify.app). The app will automatically deploy if you change any of the source files committed to the github.
 
 ## Code scaffolding
 
