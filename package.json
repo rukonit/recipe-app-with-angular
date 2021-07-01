@@ -20,7 +20,9 @@
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
     "bootstrap": "^3.4.1",
+    "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
+    "save": "^2.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

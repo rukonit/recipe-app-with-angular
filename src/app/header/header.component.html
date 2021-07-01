@@ -1,22 +1,16 @@
 
-<nav class="navbar navbar-expand-lg navbar-default">
+<nav class="navbar navbar-default navbar-expand-lg">
 <div class=container-fluid>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>Hello
-      </button> -->
+   
      <div class="navbar-header">
         <a routerLink="" class="navbar-brand">Recipe Book</a>
     </div>
-    <button *ngIf="!collapsed" class="navbar-toggler" type="button" data-toggle="collapse"
-           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-           aria-expanded="false" aria-label="Toggle navigation"
-           (click)="toggleCollapsed()">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}" id="navbarSupportedContent">
-            <ul class="nav navbar-nav me-auto">
+ 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ">
                 <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
                 <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+                <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" appDropdown>
