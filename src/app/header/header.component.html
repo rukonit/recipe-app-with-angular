@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-default navbar-expand-lg">
+<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-sm fixed-top">
 <div class=container-fluid>
    
      <div class="navbar-header">
@@ -8,11 +8,14 @@
  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ">
-                <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes">Recipes</a></li>
+                <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes">Recipes<span class="navbar-toggler-icon"></span></a></li>
                 <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
                 <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+
+     
+            <ul class="nav navbar-nav navbar-right" id="navbarSupportedContent">
+    
                 <li><a style="cursor: pointer;" (click)="onLogout()" *ngIf="isAuthenticated">Logout</a></li>
                 <li class="dropdown" appDropdown>
                     <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
@@ -23,7 +26,7 @@
                 </li>
             
             </ul>
-    </div>
+        </div>
 </div>
 
 </nav>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
+import { promise } from "protractor";
 import { Subscription } from "rxjs";
 import { AuthService } from "../auth/auth.service";
 import { DataStorageService } from "../shared/data-storage.service";
@@ -13,8 +14,13 @@ import { DataStorageService } from "../shared/data-storage.service";
 export class HeaderComponent implements OnInit, OnDestroy {
     private userSub: Subscription;
     isAuthenticated = false;
+    demo: string | Promise<string> | null = "Welcome to the page" 
+    
+    constructor(private dataStoreService: DataStorageService, private authService: AuthService) {
+      
+    }
 
-    constructor(private dataStoreService: DataStorageService, private authService: AuthService) {}
+
  
     onSaveRecipe() {
         this.dataStoreService.storeRecipe()
@@ -31,7 +37,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
             console.log(!user)
             console.log(!!user)
         });
-    }
+
+       }
 
     ngOnDestroy() {
         this.userSub.unsubscribe();
