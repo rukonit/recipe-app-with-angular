@@ -8,7 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { StoreModule } from '@ngrx/store'
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
-import { reducers } from './shopping-list/store/reducer-comp';
+import { reducers } from './store/app.reducer';
+import { authReducer } from './auth/store/auth.reducer';
 
 
 
