@@ -3,13 +3,12 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 
-import { Observable, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { AlertComponent } from "../shared/alert/alert.component";
 import { PlaceHolderDirective } from "../shared/placeholder/placeholder.directive";
-import { AuthResponseData, AuthService } from "./auth.service";
+import { AuthService } from "./auth.service";
 import * as fromApp from '../store/app.reducer'
 import * as fromAuthActions from './store/auth.actions'
-import { error } from "protractor";
 
 
 @Component({
