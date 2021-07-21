@@ -7,7 +7,7 @@ export interface State {
 }
 
 const initialState: State = {
-    recipes: [new Recipe("Ketcup", "It turns out ketchup's origins are anything but American. Ketchup comes from the Hokkien Chinese word, kê-tsiap, the name of a sauce derived from fermented fish.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_T_gD7-2C5w7K_THvEuLS9MrNPvPaBGqjc68CA2RDeOv7RFDrOGzVF-sG8yTvfCYONV0&usqp=CAU", null)]
+    recipes: null //[new Recipe("Ketcup", "It turns out ketchup's origins are anything but American. Ketchup comes from the Hokkien Chinese word, kê-tsiap, the name of a sauce derived from fermented fish.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_T_gD7-2C5w7K_THvEuLS9MrNPvPaBGqjc68CA2RDeOv7RFDrOGzVF-sG8yTvfCYONV0&usqp=CAU", null)]
 }
 
 export function recipeReducer(state : State = initialState, action: fromRecipesActions.RecipeActions) {
@@ -38,12 +38,15 @@ export function recipeReducer(state : State = initialState, action: fromRecipesA
             }
 
         case fromRecipesActions.DELETE_RECIPES:
+       
+         
            
+             
             return {
                 ...state,
-                recipes: [...state.recipes.filter((recipe, index)=> {
-                    return index !== action.payload;
-                })]
+                recipes: state.recipes.filter((recipe, index)=> {
+                    return index != action.payload;
+                })
             }
     
     default:

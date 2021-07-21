@@ -22,11 +22,14 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
             return recipesState.recipes;
         }),
         switchMap(recipes => {
-            if(recipes.length === 0) {
-                this.store.dispatch(new fromRecipeActions.FetchRecips()) 
+            if(recipes === null) {
+                this.store.dispatch(new fromRecipeActions.FetchRecips())
+               
                 return this.actions$.pipe(ofType(fromRecipeActions.SET_RECIPES), take(1));
+
             }
             else {
+                          
                 return of(recipes)
             }
         }))

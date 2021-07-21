@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit} from "@angular/core";
-import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { promise } from "protractor";
 import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
-import { AuthService } from "../auth/auth.service";
-import { DataStorageService } from "../shared/data-storage.service";
+
+
 import * as fromApp from '../store/app.reducer';
 import * as fromAuthActions from '../auth/store/auth.actions';
 import * as fromRecipeActions from '../recipes/store/recipes.actions';
@@ -21,14 +19,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isAuthenticated = false;
     demo: string | Promise<string> | null = "Welcome to the page" 
     
-    constructor(private dataStoreService: DataStorageService, private authService: AuthService, private store: Store<fromApp.AppState>) {
+    constructor(private store: Store<fromApp.AppState>) {
       
     }
 
 
  
     onSaveRecipe() {
-        this.dataStoreService.storeRecipe()
+        this.store.dispatch(new fromRecipeActions.StoreRecipes)
     }
 
     onFetchRecipe() {
