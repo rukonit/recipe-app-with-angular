@@ -30,7 +30,8 @@ const handleAuthentication = (expiresIn: number, email: string, userId: string, 
        email: email,
        userId: userId,
         token: token,
-        expirationDate: expirationDate
+        expirationDate: expirationDate,
+        redirect: true
 
     });
 
@@ -89,7 +90,7 @@ export class AuthEffects {
             {email: authData.payload.email, password: authData.payload.password, returnSecureToken: true}
             ).pipe(
                 tap((resData)=>{
-                    this.authService.setLogoutTimer(+resData.expiresIn);
+                    this.authService.setLogoutTimer(+resData.expiresIn * 1000);
                 }),
                 map(resData => {
                   return handleAuthentication(+resData.expiresIn, resData.email, resData.localId, resData.idToken)
@@ -104,9 +105,11 @@ export class AuthEffects {
 
     @Effect({dispatch: false})
     authLogout = this.actions$.pipe(ofType(fromAuthActions.LOGOUT), tap(()=> {
-        this.authService.clearLogoutTimer();
+    
         localStorage.removeItem('userData');
+        this.authService.clearLogoutTimer();
         this.router.navigate(['/login'])
+
     })
     )
 
@@ -130,9 +133,9 @@ export class AuthEffects {
         if (loadedUser.token) {
             const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
     
-                this.authService.setLogoutTimer(expirationDuration);
+            this.authService.setLogoutTimer(expirationDuration);
         
-          return new fromAuthActions.AuthenticateSuccess({email: loadedUser.email, userId: loadedUser.id, token: loadedUser.token, expirationDate: new Date(userData._tokenExpirationDate)})
+          return new fromAuthActions.AuthenticateSuccess({email: loadedUser.email, userId: loadedUser.id, token: loadedUser.token, expirationDate: new Date(userData._tokenExpirationDate), redirect: false})
       
             // this.user.next(loadedUser);
             
@@ -145,8 +148,10 @@ export class AuthEffects {
     }))
 
     @Effect({dispatch: false})
-    authRedirect = this.actions$.pipe(ofType(fromAuthActions.AUTHENTICATE_SUCCESS), tap(()=> {
+    authRedirect = this.actions$.pipe(ofType(fromAuthActions.AUTHENTICATE_SUCCESS), tap((authSuccessAction: fromAuthActions.AuthenticateSuccess)=> {
+        if (authSuccessAction.payload.redirect) {
         this.router.navigate(['/'])
+    }
     }))
 
     constructor(private actions$: Actions, private http: HttpClient, private router:Router, private authService: AuthService) {

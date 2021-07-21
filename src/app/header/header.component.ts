@@ -6,8 +6,9 @@ import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 import { AuthService } from "../auth/auth.service";
 import { DataStorageService } from "../shared/data-storage.service";
-import * as fromApp from '../store/app.reducer'
-import * as fromAuthActions from '../auth/store/auth.actions'
+import * as fromApp from '../store/app.reducer';
+import * as fromAuthActions from '../auth/store/auth.actions';
+import * as fromRecipeActions from '../recipes/store/recipes.actions';
 
 @Component(
     {
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     onFetchRecipe() {
-        this.userSub = this.dataStoreService.fetchRecipe().subscribe();
+        this.store.dispatch(new fromRecipeActions.FetchRecips())
     }
 
     ngOnInit() {
