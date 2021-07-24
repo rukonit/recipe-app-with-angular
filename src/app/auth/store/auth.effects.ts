@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { of} from "rxjs";
-import { catchError, map, switchMap, tap } from "rxjs/operators";
+import { catchError, exhaustMap, map, switchMap, tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { AuthService } from "../auth.service";
 import { User } from "../user.model";
@@ -85,7 +85,7 @@ export class AuthEffects {
     @Effect()
     authLogin = this.actions$.pipe(
         ofType(fromAuthActions.LOGIN_START),
-        switchMap((authData: fromAuthActions.LoginStart) => {
+        exhaustMap((authData: fromAuthActions.LoginStart) => {
             return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+ environment.firebaseAPIKey, 
             {email: authData.payload.email, password: authData.payload.password, returnSecureToken: true}
             ).pipe(
