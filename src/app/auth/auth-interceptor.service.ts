@@ -8,7 +8,7 @@ import { Store } from "@ngrx/store";
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
 
-    constructor(private authService: AuthService, private store: Store<fromApp.AppState>) {
+    constructor(private store: Store<fromApp.AppState>) {
 
     }
 
