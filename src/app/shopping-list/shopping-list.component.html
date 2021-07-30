@@ -1,8 +1,8 @@
-<div class="row">
-    <div class="col-xs-12">
+<div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
         <app-shopping-edit></app-shopping-edit>
-        <hr>
-        <ul class="list-group">
+        <hr  class="col-xs-12 col-sm-12 col-md-8 col-lg-10 col-xl-8">
+        <ul class="list-group  col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-8">
             <a class="list-group-item" style="cursor: pointer" *ngFor="let ingredient of (ingredients | async).ingredients; let i = index"
             (click)="onEditItem(i)">
                 {{ingredient.name}} ({{ingredient.amount}})</a>

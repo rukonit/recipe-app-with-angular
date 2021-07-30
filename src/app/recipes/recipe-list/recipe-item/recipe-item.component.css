@@ -1,0 +1,10 @@
+.list-group-item.active {
+    color:#99ce1d;
+    background-color: #e8ce87;
+    padding: 1px;
+}
+
+.list-group-item {
+   padding: 1px;
+
+}
