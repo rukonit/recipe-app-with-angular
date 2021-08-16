@@ -122,6 +122,7 @@ export class AuthEffects {
             _tokenExpirationDate: string
 
         } = JSON.parse(localStorage.getItem('userData'))
+       console.log(userData);
        
         if (!userData) {
             return { type: 'DUMMY'};
@@ -131,11 +132,13 @@ export class AuthEffects {
         const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate));
 
         if (loadedUser.token) {
+     
+            
             const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
     
             this.authService.setLogoutTimer(expirationDuration);
         
-          return new fromAuthActions.AuthenticateSuccess({email: loadedUser.email, userId: loadedUser.id, token: loadedUser.token, expirationDate: new Date(userData._tokenExpirationDate), redirect: false})
+          return new fromAuthActions.AuthenticateSuccess({email: loadedUser.email, userId: loadedUser.id, token: loadedUser.token, expirationDate: new Date(userData._tokenExpirationDate), redirect: true})
       
             // this.user.next(loadedUser);
             
@@ -149,7 +152,9 @@ export class AuthEffects {
 
     @Effect({dispatch: false})
     authRedirect = this.actions$.pipe(ofType(fromAuthActions.AUTHENTICATE_SUCCESS), tap((authSuccessAction: fromAuthActions.AuthenticateSuccess)=> {
+        console.log("loadedUser");
         if (authSuccessAction.payload.redirect) {
+        
         this.router.navigate(['/'])
     }
     }))

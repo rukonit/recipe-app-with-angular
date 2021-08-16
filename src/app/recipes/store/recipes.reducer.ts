@@ -39,8 +39,7 @@ export function recipeReducer(state : State = initialState, action: fromRecipesA
 
         case fromRecipesActions.DELETE_RECIPES:
        
-         
-           
+              
              
             return {
                 ...state,

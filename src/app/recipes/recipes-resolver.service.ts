@@ -19,7 +19,7 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
         return this.store.select('recipes').pipe(
             take(1),
             map((recipesState) => {
-            return recipesState.recipes;
+            return recipesState.recipes
         }),
         switchMap(recipes => {
             if(recipes === null) {
