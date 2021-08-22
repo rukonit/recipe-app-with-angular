@@ -7,9 +7,19 @@
 
 <div class="row" >
     <div class="col-xs-12">
-       <app-recipe-item  *ngFor="let recipeEl of recipes; let i=index;" [index] = "i" [recipe]="recipeEl"></app-recipe-item>
-    </div>  
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+
+      <div *ngFor="let recipeEl of recipes; let i=index;"  class="col">
+    
+       <app-recipe-item [index] = "i" [recipe]="recipeEl"></app-recipe-item>
+
   </div>
+</div>
+    </div>
+
+</div>
+
+
 
 
 
